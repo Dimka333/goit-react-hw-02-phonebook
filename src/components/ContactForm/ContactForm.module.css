@@ -1,0 +1,18 @@
+
+.Form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 300px;
+}
+.label{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.input{
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
