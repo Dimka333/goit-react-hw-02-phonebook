@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import { Formik, Form, Field } from 'formik';
 import Container from './Container';
 import ContactForm from './ContactForm';
 import { ContactList } from './ContactList/ContactList';
@@ -57,7 +56,6 @@ export class App extends Component {
   };
 
   render() {
-    const { contacts } = this.state;
     return (
       <>
 
@@ -72,7 +70,7 @@ export class App extends Component {
             contacts={this.handleVisibleContacts()}
             filter={this.state.filter}
             onClick={this.deleteContact}
-          />
+           />
         </Container>
       </>
     );
