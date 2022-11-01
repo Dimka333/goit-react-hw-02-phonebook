@@ -11,7 +11,6 @@ import * as Yup from 'yup';
 //     .matches(phoneRegExp, 'Phone number is not valid')
 //     .required(),
 // })
-
 export const ContactForm = ({ addContact }) => {
 
   const handleSubmit = ({ name, number }, actions) => {
@@ -57,6 +56,5 @@ export const ContactForm = ({ addContact }) => {
     </Formik>
   );
 };
-
 
 export default ContactForm;
