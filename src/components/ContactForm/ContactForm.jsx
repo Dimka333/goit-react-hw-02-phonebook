@@ -1,6 +1,7 @@
 import styles from './ContactForm.module.css';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 
 const phoneRegExp = /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
 
@@ -54,5 +55,11 @@ export const ContactForm = ({ addContact }) => {
     </Formik>
   );
 };
+
+ContactForm.prototype = {
+  addContact : PropTypes.func.isRequired
+}
+
+
 
 export default ContactForm;
