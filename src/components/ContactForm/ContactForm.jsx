@@ -1,15 +1,15 @@
 import styles from './ContactForm.module.css';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
-// import * as Yup from 'yup';
+import * as Yup from 'yup';
 
-// const phoneRegExp = /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
-//
-// const schema = Yup.object().shape({
-//   login: Yup.string().required(),
-//   number: Yup.string()
-//     .matches(phoneRegExp, 'Phone number is not valid')
-//     .required(),
-// })
+const phoneRegExp = /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/;
+
+const schema = Yup.object().shape({
+  name: Yup.string().required(),
+  number: Yup.string()
+    .matches(phoneRegExp, 'Phone number is not valid')
+    .required(),
+})
 export const ContactForm = ({ addContact }) => {
 
   const handleSubmit = ({ name, number }, actions) => {
@@ -22,7 +22,7 @@ export const ContactForm = ({ addContact }) => {
     <Formik
       initialValues={{ name: '', number: '' }}
       onSubmit={handleSubmit}
-      // validationSchema={schema}
+      validationSchema={schema}
     >
 
       <Form className={styles.Form}>
@@ -31,10 +31,10 @@ export const ContactForm = ({ addContact }) => {
             className={styles.input}
             name='name'
             type='text'
-            // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           />
-
+          <ErrorMessage className={styles.errorMessage} name="name" component="div" />
         </label>
 
         <label className={styles.label}>
@@ -43,11 +43,11 @@ export const ContactForm = ({ addContact }) => {
             className={styles.input}
           type='text'
           name='number'
-          // pattern='\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}'
-          // title='Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
+          pattern='\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}'
+          title='Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
         />
-          <ErrorMessage name="number" component="div" />
-          <button type='submit'>Add contact</button>
+          <ErrorMessage className={styles.errorMessage} name="number" component="div" />
+          <button className={styles.submBtn} type='submit'>Add contact</button>
         </label>
 
       </Form>
