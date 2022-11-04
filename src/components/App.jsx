@@ -26,6 +26,9 @@ export class App extends Component {
       number,
     };
     console.log(newContact);
+    if (this.state.contacts.find(item => item.name.toLowerCase() === newContact.name.toLowerCase())) {
+      console.log("Такое имя уже есть")
+    }else
     this.setState(prevState => ({
       contacts: [newContact, ...prevState.contacts],
 
